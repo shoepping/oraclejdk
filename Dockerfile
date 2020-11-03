@@ -14,14 +14,16 @@ FROM debian:buster
 
 ENV DEBIAN_FRONTEND noninteractive
 
-COPY jdk-8u271-linux-x64.tar.gz /tmp/
+ENV JDK_FILE=jdk-8u271-linux-x64.tar.gz
+
+COPY ${JDK_FILE} /tmp/
 
 RUN apt-get update \
     && apt-get install -y openssl ca-certificates \
     && cd /tmp \
-    && tar xzf jdk-8u271-linux-x64.tar.gz -C /opt \
+    && tar xzf ${JDK_FILE} -C /opt \
     && mv /opt/jdk* /opt/java \
-    && rm /tmp/jdk-8u271-linux-x64.tar.gz \
+    && rm /tmp/${JDK_FILE} \
     && update-alternatives --install /usr/bin/java java /opt/java/bin/java 100 \
     && update-alternatives --install /usr/bin/javac javac /opt/java/bin/javac 100
 
