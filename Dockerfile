@@ -9,6 +9,11 @@
 # docker run --name jdk8 -it shoepping/oraclejdk:8 bash
 # docker run --name jdk8 --rm -it shoepping/oraclejdk:8 java -version
 #
+# docker save shoepping/oraclejdk:8 > shoepping_oraclejdk_8_1.8.0_191.tar
+# docker run --name jdk8 --rm -it shoepping/oraclejdk:8 java -version
+# https://docs.docker.com/engine/reference/commandline/import/
+# docker import /path/to/exampleimage.tgz
+#
 ################################################################################
 FROM debian:buster
 
